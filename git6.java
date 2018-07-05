@@ -6,8 +6,7 @@ public class git6
 	{
 		Scanner sc=new Scanner(System.in);
 		String s=sc.nextLine();
-		String s1[]=new String[s.length()];
-		for(int i=0;i<s1.length;i++)
+		for(int i=0;i<s.length();i++)
 		{
 			if(i%2==0)
 			{
@@ -19,6 +18,6 @@ public class git6
 			}
 		}
 	    
-		}
+	 }
 	}
 
