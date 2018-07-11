@@ -12,11 +12,11 @@ public class palindrome
     int k1=Integer.parseInt(s);
     if(k==k1)
     {
-    	System.out.print("it's a palindrome");
+    	System.out.print("yes");
     }
     else
     {
-    	System.out.print("it's not a palindrome");
+    	System.out.print("no");
     }
 	}
 
