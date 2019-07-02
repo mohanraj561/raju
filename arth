@@ -1,14 +1,69 @@
-import java.util.*;
-public class arth
-{
-    public static void main(String args[])
-    {
-        Scanner sc=new Scanner(System.in);
-        int a=sc.nextInt();
-        int b=sc.nextInt();
-        int c=sc.nextInt();
-        int s=b+c;
-        int m=a*s;
-        System.out.print(m);
-    }
+import React from 'react';
+export default class App extends React.Component{
+constructor(props){
+  super(props)
+  this.state={
+    title:"my react app",
+    act: 0,
+    index:'',
+    datas:[]
+  }
+}
+fSubmit=(e)=>{
+
+  e.preventDefault();
+  let datas = this.state.datas;
+  let name = this.refs.name.value;
+  let address= this.refs.address.value;
+  if(this.state.act === 0){
+
+    let data = {name, address}
+    datas.push(data);
+    console.log("yes ",this.state.datas)
+}
+else{                      
+  let index = this.state.index;
+  datas[index].name = name;
+  console.log("yaa here",datas[index].name)
+  datas[index].address = address;
+}
+}
+
+  fRemove = (i) => {
+    let datas = this.state.datas;
+        datas.splice(i,1);
+    this.setState({
+      datas: datas
+    });
+    
+    console.log("here value of datas:",this.state.datas)
+    this.refs.myForm.reset();
+    this.refs.name.focus();
+  }
+
+
+render() {
+  let datas = this.state.datas;
+  return (
+    <div >
+      <h2>{this.state.title}</h2>
+      <form ref="myForm" className="myForm">
+        <input type="text" ref="name" placeholder="your name"  />
+        <input type="text" ref="address" placeholder="your address"  />
+        <button onClick={(e)=>this.fSubmit(e)} >submit </button>
+      </form>
+      <pre>
+        {datas.map((data, i) =>
+          <li key={i} className="myList">
+            {i+1}. {data.name}, {data.address}
+            <button onClick={()=>this.fRemove(i)} className="myListButton">remove </button>
+            <button onClick={()=>this.fEdit(i)} className="myListButton">edit </button>
+          </li>
+        )}
+      </pre>
+
+      </div>
+
+  );
+}
 }
